@@ -163,7 +163,7 @@ $(function () {
             data: data,
             success: function (response) {
 				
-		        if (response == "success") {
+		        if (response === 'success') {
 								
 			        $(".contact-form").find(".form-message").addClass("success");
 			        $(".form-message span").text("Message Sent!");
@@ -181,7 +181,7 @@ $(function () {
         return false;
 		
 	});
-	
+
 	
 	 jQuery('.style-1-Box .dt-sc-icon-box.type1').on("mouseenter", function () {
 		 jQuery('.style-1-Box .dt-sc-icon-box.type1 .icon-wrapper img').attr('src', 'http://www.colchiquevoyages.com/wp-content/uploads/2020/10/icon-1-light.png');

@@ -56,24 +56,25 @@
                 </div>
             </div>
             <div class="col-xl-7 col-lg-12">
-                <form class="contact-form" action="https://hasnaanajmi.com/env/Euzan/mail.php" method="post">
+               {{ form_start(contact_form,{'attr': {'class': 'contact-form'}}) }}
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" required value="" onkeyup="this.setAttribute('value', this.value);">
-                        <label for="name">Name</label>
+
+                        <input type="text" class="form-control" id="contact_me_FullName" name="contact_me[FullName]" required value="" onkeyup="this.setAttribute('value', this.value);">
+                        <label for="name" id="contact_me_FullName">Name</label>
                         <span class="input-border"></span>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" name="email" required value="" onkeyup="this.setAttribute('value', this.value);">
+                        <input type="email" class="form-control" id="contact_me_Email" name="contact_me[Email]" required value="" onkeyup="this.setAttribute('value', this.value);">
                         <label for="email">Email</label>
                         <span class="input-border"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="subject" name="subject" required value="" onkeyup="this.setAttribute('value', this.value);">
+                        <input type="text" class="form-control" id="Subject" name="contact_me[Subject]" required value="" onkeyup="this.setAttribute('value', this.value);">
                         <label for="subject">Subject</label>
                         <span class="input-border"></span>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="message" name="message" required data-value="" onkeyup="this.setAttribute('data-value', this.value);"></textarea>
+                        <textarea class="form-control" id="Message" name="contact_me[Message]" required data-value="" onkeyup="this.setAttribute('data-value', this.value);"></textarea>
                         <label for="message">Your Message</label>
                         <span class="input-border"></span>
                     </div>
@@ -81,7 +82,8 @@
                     <button class="contact-btn main-btn btn btn-block" type="submit" name="send">Send Message</button>
                     <!-- Form Message  -->
                     <div class="form-message text-center"><span></span></div>
-                </form>
+                {{ form_row(contact_form._token) }}
+                {{ form_end(contact_form,{'render_rest':false}) }}
             </div>
         </div>
     </div>
