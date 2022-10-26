@@ -2,9 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <title>{% block title %}Isikeke{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Euzan - Creative Portfolio Template">
+        <meta name="keywords" content="Html, Css, jQuery, JavaScript, Euzan, responsive, onepage, personal, Portfolio, design, creative, template">
+
+        <!-- Favicon -->
+        <link rel="icon" href="images/icon.png">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800">
+
+        <!-- Font Awesome Css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}">
+        <!-- Flaticon -->
+        <link rel="stylesheet" href="{{ asset('assets/fonts/flaticon.css') }}">
+        <!-- Bootstrap 4 Css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+        <!-- Animations Css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/vendor/animations.css') }}">
+        <!-- Slick Css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick.min.css') }}">
+        <!-- Main Style Css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/main/homepages.css') }}">
+        <!-- Colors Css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/main/skins/blue_color.html') }}">
+
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Moderniz Js -->
+        <script src="{{ asset('assets/js/modernizr.custom.js') }}"></script>
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -13,7 +45,43 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
+
     <body>
+
+     {{ include('_shared/preloader.html.twig') }}
+     {{ include('_shared/main_navigation.html.twig') }}
+     {{ include('_shared/mobile_menu.html.twig') }}
+
+     <div class="main-content subpages">
+         {{ include('sections/home.html.twig') }}
+         {{ include('sections/about.html.twig') }}
+         {{ include('sections/contacts.html.twig') }}
+         {{ include('sections/blog.html.twig') }}
+         {{ include('sections/portfolio.html.twig') }}
+         {{ include('_shared/resume.html.twig') }}
+
+     </div>
         {% block body %}{% endblock %}
     </body>
+
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+    <!-- Slick Js -->
+    <script src="{{ asset('assets/js/slick.min.js') }}"></script>
+    <!-- Page Transitions Js -->
+    <script src="{{ asset('assets/js/pagetransitions.js') }}"></script>
+    <!-- Popper Js  -->
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <!-- Bootstrap 4 Js -->
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <!-- Count To Js -->
+    <script src="{{ asset('assets/js/jquery.countTo.min.js') }}"></script>
+    <!-- Circle Progress JS  -->
+    <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
+    <!-- Custom Js -->
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    </body>
+    <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'p3plzcpnl494303'},{'dcenter':'p3'},{'id':'8986333'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='../../../img6.wsimg.com/wrhs/362d20193a8fed115f99b16a157b7fc4/tccl.min.js'></script><script src='../../../img6.wsimg.com/wrhs/ce554d2333f3801abafb32da18213ff7/tti.min.js' onload='window.tti.calculateTTI()'></script>
 </html>
