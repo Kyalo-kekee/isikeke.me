@@ -56,6 +56,7 @@
                 </div>
             </div>
             <div class="col-xl-7 col-lg-12">
+              {% if contact_form is defined%}
                {{ form_start(contact_form,{'attr': {'class': 'contact-form'}}) }}
                     <div class="form-group">
 
@@ -84,6 +85,8 @@
                     <div class="form-message text-center"><span></span></div>
                 {{ form_row(contact_form._token) }}
                 {{ form_end(contact_form,{'render_rest':false}) }}
+
+                {% endif %}
             </div>
         </div>
     </div>
