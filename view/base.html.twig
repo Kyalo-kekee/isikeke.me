@@ -54,6 +54,7 @@
      {{ include('_shared/mobile_menu.html.twig') }}
 
      <div class="main-content subpages">
+         {% block body %}{% endblock %}
          {{ include('sections/home.html.twig') }}
          {{ include('sections/about.html.twig') }}
          {{ include('sections/contacts.html.twig') }}
@@ -62,9 +63,6 @@
          {{ include('_shared/resume.html.twig') }}
 
      </div>
-        {% block body %}{% endblock %}
-    </body>
-
 
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>

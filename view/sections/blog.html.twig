@@ -4,6 +4,8 @@
             <h2><span>Blog</span></h2>
         </div>
         <div class="row">
+            {% if blogs is not null %}
+            {% for blog in blogs %}
             <!-- New Item -->
             <div class="col-xl-6 col-md-12">
                 <div class="post">
@@ -13,40 +15,25 @@
                     </div>
                     <!-- Post Content -->
                     <div class="post-content">
-                        <div class="post-date">20 Juin 2020</div>
-                        <div class="post-title">
-                            <a href="blog-single.html" target="_blank"><h4>Create a wordpress theme</h4></a>
+                        <div class="post-date">{{ blog.CreatedAt |date }}<div>
+                            <div class="post-title">
+                                <a href="blog-single.html" target="_blank"><h4>{{ blog.title }}</h4></a>
+                            </div>
+                            <div class="post-text">
+                                {{ blog.content [:100]|raw  }} {{ ' ...' }}
+                            </div>
+                            <a href="blog-single.html" target="_blank" class="post-more">Read more</a>
                         </div>
-                        <div class="post-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-                        </div>
-                        <a href="blog-single.html" target="_blank" class="post-more">Read more</a>
                     </div>
                 </div>
+                <!-- New Item -->
+                {% endfor %}
+                {% else %}
+                    <div class="alert alert-danger">No post found</div>
+                {% endif %}
             </div>
-            <!-- New Item -->
-            <div class="col-xl-6 col-md-12">
-                <div class="post">
-                    <!-- Post Image -->
-                    <div class="post-img">
-                        <img src="images/blog/2.jpg" class="img-fluid" alt="">
-                    </div>
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <div class="post-date">20 Juin 2020</div>
-                        <div class="post-title">
-                            <a href="blog-single.html" target="_blank"><h4>Top Graphic Design Topics</h4></a>
-                        </div>
-                        <div class="post-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-                        </div>
-                        <a href="blog-single.html" target="_blank" class="post-more">Read more</a>
-                    </div>
-                </div>
+            <div class="my-btn">
+                <a href="blog.html" target="_blank" class="main-btn">All Posts</a>
             </div>
         </div>
-        <div class="my-btn">
-            <a href="blog.html" target="_blank" class="main-btn">All Posts</a>
-        </div>
-    </div>
 </section>

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\ContactDto;
 use App\ErrorHandler\ApplicationExceptions;
 use App\Form\ContactMeType;
+use App\Repository\BlogPostRepository;
 use App\Repository\ContactDtoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(Request $request,ContactDtoRepository $contactDtoRepository,ApplicationExceptions $exceptions): Response
+    public function index(
+        Request $request,
+        ContactDtoRepository $contactDtoRepository,
+        ApplicationExceptions $exceptions,
+        BlogPostRepository $blogPostRepository)
     {
         $contact_me = new ContactDto();
         $contact_me_form = $this->createForm(ContactMeType::class,$contact_me);
@@ -32,7 +37,8 @@ class HomeController extends AbstractController
         }
         return $this->render('base.html.twig', [
             'controller_name' => 'HomeController',
-            'contact_form' => $contact_me_form ->createView()
+            'contact_form' => $contact_me_form ->createView(),
+            'blogs' => $blogPostRepository->findBy([],['id'=>'DESC'],10)
         ]);
     }
 }

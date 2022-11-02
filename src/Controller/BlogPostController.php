@@ -13,11 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('Admin/blog-post')]
 class BlogPostController extends AbstractController
 {
-    #[Route('/', name: 'app_blog_post_index', methods: ['GET'])]
+    #[Route('/', name: 'app_blog_post_index')]
     public function index(BlogPostRepository $blogPostRepository): Response
     {
-        return $this->render('Admin/blog_post/edit.html.twig', [
-            'blog_posts' => $blogPostRepository->findAll(),
+        return $this->render('Admin/blog_post/index.html.twig', [
+            'blog_posts' =>$blogPostRepository ->findAll(),
         ]);
     }
 
@@ -34,9 +34,9 @@ class BlogPostController extends AbstractController
             return $this->redirectToRoute('app_blog_post_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('Admin/blog_post/new.html.twig', [
+        return $this->render('Admin/blog_post/new.html.twig', [
             'blog_post' => $blogPost,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 

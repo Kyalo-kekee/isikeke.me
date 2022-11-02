@@ -1,4 +1,51 @@
+
+
+
+<button class="btn btn-sm show-hide-blog-header" type="button"><i class="fa fa-toggle-on"></i></button>
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="top-body" style="">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ form_row(form.Title,{'attr':{'class':'form-control'}}) }}
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ form_row(form.Description,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                {{ form_row(form.BlogCategory,{'attr':{'class':'form-control'}}) }}
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                {{ form_row(form.BlogTags,{'attr':{'class':'form-control'}}) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-md-12 col-sm-12">
+
+        <textarea name="blog_post[Content]" class="blog-text"></textarea>
+       {# {{ form_row(form.Content,{'attr':{'class':'textarea form-control blog-text'}}) }}#}
+
+    </div>
+    <button class="btn btn-sm btn-primary  mt-2 p-2" type="submit">save</button>
+
+</div>
+{{ form_row(form._token) }}
+{{ form_end(form,{'render_rest':false}) }}
+<div class="row">
+
+
+</div>

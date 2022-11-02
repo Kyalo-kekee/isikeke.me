@@ -1,0 +1,23 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Tags{% endblock %}
+
+{% block body %}
+<h4>
+    Create new Tag
+</h4>
+    <div class="col col-md-12 col-sm">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                {{ include('Admin/blog_tags/_form.html.twig') }}
+            </div>
+
+        </div>
+    </div>
+
+
+    <a href="{{ path('app_blog_tags_index') }}">back to list</a>
+{% endblock %}

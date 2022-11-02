@@ -13,7 +13,7 @@ use Symfony\Component\Uid\Ulid;
 class BlogPost
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'uuid', unique: true)]
+    #[ORM\Column(type: 'ulid', unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
     private ?Ulid $id = null;
@@ -32,6 +32,12 @@ class BlogPost
 
     #[ORM\ManyToMany(targetEntity: Tags::class, inversedBy: 'blogPosts')]
     private Collection $BlogTags;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $CreatedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $UpdatedAt = null;
 
     public function __construct()
     {
@@ -124,6 +130,30 @@ class BlogPost
     public function removeBlogTag(Tags $blogTag): self
     {
         $this->BlogTags->removeElement($blogTag);
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $CreatedAt): self
+    {
+        $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->UpdatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $UpdatedAt): self
+    {
+        $this->UpdatedAt = $UpdatedAt;
 
         return $this;
     }
